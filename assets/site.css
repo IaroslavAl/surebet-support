@@ -372,10 +372,10 @@ p {
   display: none;
 }
 .device-mini {
-  --bezel: 3.25%;
-  --glass-edge: 2.2cqw;
-  --body-radius: 5.4% / 8%;
-  --screen-radius: 2.6% / 4%;
+  --bezel: 3%;
+  --glass-edge: 1.6cqw;
+  --body-radius: 5.4% / 7.2%;
+  --screen-radius: 2.6% / 3.5%;
 }
 .device-duo {
   --bezel: 1.9%;
@@ -428,9 +428,9 @@ p {
     --glass-edge: 0.5cqw;
   }
   .device-mini {
-    width: 78%;
+    width: 74%;
     top: 0;
-    right: 2%;
+    right: 3%;
   }
   .device-duo {
     z-index: 3;

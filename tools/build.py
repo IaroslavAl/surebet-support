@@ -19,7 +19,7 @@ APP_ID = "1667102550"
 EMAIL = "beldin_dev@icloud.com"
 UPDATED = "2026-11-21"
 LANGS = ["en", "ru", "fr"]
-ASSET_VERSION = "4"
+ASSET_VERSION = "5"
 
 BADGE_WIDTH = {"en": 119.66407, "ru": 119.66407, "fr": 126.50751}  # badge viewBox at height 40
 
@@ -71,8 +71,8 @@ T: dict[str, dict] = {
         "facts": ["Free", "iOS 16 or later", "No account"],
         "shot_alt": {
             "iphone": "Surebet Stake Calculator on iPhone: two outcomes and a 5% return",
-            "mini": "The calculator on iPad mini in landscape",
-            "duo": "The calculator on an unfolded iPhone Duo with a 4.76% return",
+            "mini": "The calculator on iPad in landscape",
+            "duo": "The calculator on an unfolded iPhone Duo",
         },
         "how_kicker": "How it works",
         "how_h2": "Split a stake in three steps",
@@ -180,8 +180,8 @@ T: dict[str, dict] = {
         "facts": ["Бесплатно", "iOS 16 и новее", "Без регистрации"],
         "shot_alt": {
             "iphone": "Surebet Stake Calculator на iPhone: два исхода и доходность 5 %",
-            "mini": "Калькулятор на горизонтальном iPad mini",
-            "duo": "Калькулятор на раскрытом iPhone Duo с доходностью 4,76 %",
+            "mini": "Калькулятор на горизонтальном iPad",
+            "duo": "Калькулятор на раскрытом iPhone Duo",
         },
         "how_kicker": "Как это работает",
         "how_h2": "Расчёт вилки за три шага",
@@ -289,8 +289,8 @@ T: dict[str, dict] = {
         "facts": ["Gratuit", "iOS 16 ou version ultérieure", "Sans compte"],
         "shot_alt": {
             "iphone": "Surebet Stake Calculator sur iPhone : deux issues et un rendement de 5 %",
-            "mini": "Le calculateur sur iPad mini à l’horizontale",
-            "duo": "Le calculateur sur un iPhone Duo déplié avec un rendement de 4,76 %",
+            "mini": "Le calculateur sur iPad à l’horizontale",
+            "duo": "Le calculateur sur un iPhone Duo déplié",
         },
         "how_kicker": "Fonctionnement",
         "how_h2": "Répartir une mise en trois étapes",
@@ -625,9 +625,9 @@ def home(lang: str, canonical: str | None = None) -> str:
           </div>
           <figure class="hero-visual">
             <div class="device-stage">
-              <div class="device device-iphone"><span class="hardware">{picture(lang, 'iphone', alt['iphone'], 720, 1566, False)}</span></div>
-              <div class="device device-mini"><span class="hardware">{picture(lang, 'mini', alt['mini'], 1380, 901, True)}</span></div>
-              <div class="device device-duo"><span class="hardware">{picture(lang, 'duo', alt['duo'], 1426, 1003, True)}</span></div>
+              <div class="device device-iphone"><span class="hardware">{picture(lang, 'iphone', alt['iphone'], 1000, 2175, False)}</span></div>
+              <div class="device device-mini"><span class="hardware">{picture(lang, 'mini', alt['mini'], 1600, 1200, True)}</span></div>
+              <div class="device device-duo"><span class="hardware">{picture(lang, 'duo', alt['duo'], 1600, 1126, True)}</span></div>
             </div>
           </figure>
         </div>
