@@ -1,0 +1,26 @@
+# Surebet Stake Calculator — support site
+
+Public page for the iOS app [Surebet Stake Calculator](https://apps.apple.com/app/id1667102550): what the app does, FAQ, developer contact and privacy policy. Published with GitHub Pages at https://iaroslaval.github.io/surebet-support/ in English, Russian and French.
+
+## Editing
+
+All page texts live in `tools/build.py`; the privacy policy bodies live in `tools/content/privacy-*.html`. After editing, rebuild and commit the generated HTML:
+
+```bash
+python3 tools/build.py
+```
+
+Preview locally from the parent folder so the `/surebet-support/` paths resolve:
+
+```bash
+cd .. && python3 -m http.server 8765
+```
+
+Then open http://localhost:8765/surebet-support/en/.
+
+## Rules
+
+- No analytics, cookies, web fonts, CDNs or other third-party requests: the privacy policy promises that the site itself adds none.
+- Images are self-hosted. Screenshots: `assets/{iphone,mini,duo}-{lang}[-dark].webp`; the build picks the language and dark variants automatically when the files exist and falls back to English.
+- App Store badges in `assets/badges` are the official artwork from Apple Marketing Tools.
+- Bump `ASSET_VERSION` in `tools/build.py` when CSS or images change.
