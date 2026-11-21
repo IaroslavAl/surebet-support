@@ -23,7 +23,7 @@
       href="https://iaroslaval.github.io/surebet-support/ru/"
     />
     <link rel="icon" href="../assets/icon.png" />
-    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="stylesheet" href="../assets/site.css?v=devices2" />
   </head>
   <body>
     <header>
@@ -44,7 +44,7 @@
     <main class="wrap">
       <section class="hero">
         <div class="intro">
-          <h1>Surebet<span>Stake Calculator</span></h1>
+          <h1>Surebet Stake Calculator</h1>
           <p>
             Enter the odds and a total stake. See how much to allocate to each
             outcome and what each result would return.
@@ -57,19 +57,48 @@
             >
           </div>
         </div>
-        <div class="stage">
-          <img
-            class="tablet"
-            src="../assets/ipad-en.webp"
-            alt="The calculator in English showing a two-outcome calculation on iPad"
-            decoding="async"
-          /><img
-            class="phone"
-            src="../assets/iphone-en.webp"
-            alt="The calculator in English showing a two-outcome calculation on iPhone"
-            decoding="async"
-          />
-        </div>
+        <figure
+          class="devices"
+          aria-label="App screenshots. Select a device to enlarge."
+        >
+          <div class="device-stage">
+            <a
+              class="device device-iphone"
+              href="../assets/iphone-en.webp"
+              aria-label="Enlarge · Calculator on iPhone"
+            >
+              <span class="hardware"
+                ><img src="../assets/iphone-en.webp" alt="Calculator on iPhone"
+              /></span>
+            </a>
+            <a
+              class="device device-mini"
+              href="../assets/mini-en.webp"
+              aria-label="Enlarge · A 5% return on iPad mini in landscape"
+            >
+              <span class="hardware"
+                ><img
+                  src="../assets/mini-en.webp"
+                  alt="A 5% return on iPad mini in landscape"
+              /></span>
+            </a>
+            <a
+              class="device device-duo"
+              href="../assets/duo-en.webp"
+              aria-label="Enlarge · A 4.76% return on unfolded iPhone Duo"
+            >
+              <span class="hardware"
+                ><img
+                  src="../assets/duo-en.webp"
+                  alt="A 4.76% return on unfolded iPhone Duo"
+              /></span>
+            </a>
+          </div>
+          <figcaption>
+            iPhone <span aria-hidden="true">·</span> iPad mini
+            <span aria-hidden="true">·</span> iPhone Duo
+          </figcaption>
+        </figure>
       </section>
       <section class="example">
         <h2>Work through a calculation</h2>

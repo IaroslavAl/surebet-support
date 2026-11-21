@@ -23,7 +23,7 @@
       href="https://iaroslaval.github.io/surebet-support/ru/"
     />
     <link rel="icon" href="../assets/icon.png" />
-    <link rel="stylesheet" href="../assets/site.css" />
+    <link rel="stylesheet" href="../assets/site.css?v=devices2" />
   </head>
   <body>
     <header>
@@ -47,7 +47,7 @@
     <main class="wrap">
       <section class="hero">
         <div class="intro">
-          <h1>Surebet<span>Stake Calculator</span></h1>
+          <h1>Surebet Stake Calculator</h1>
           <p>
             Введите коэффициенты и общую сумму. Калькулятор покажет, сколько
             поставить на каждый исход и какой получится результат.
@@ -60,19 +60,50 @@
             >
           </div>
         </div>
-        <div class="stage">
-          <img
-            class="tablet"
-            src="../assets/ipad-ru.webp"
-            alt="Калькулятор на русском языке с примером для двух исходов на iPad"
-            decoding="async"
-          /><img
-            class="phone"
-            src="../assets/iphone-ru.webp"
-            alt="Калькулятор на русском языке с примером для двух исходов на iPhone"
-            decoding="async"
-          />
-        </div>
+        <figure
+          class="devices"
+          aria-label="Экраны приложения. Нажмите на устройство, чтобы увеличить."
+        >
+          <div class="device-stage">
+            <a
+              class="device device-iphone"
+              href="../assets/iphone-ru.webp"
+              aria-label="Увеличить · Калькулятор на iPhone"
+            >
+              <span class="hardware"
+                ><img
+                  src="../assets/iphone-ru.webp"
+                  alt="Калькулятор на iPhone"
+              /></span>
+            </a>
+            <a
+              class="device device-mini"
+              href="../assets/mini-ru.webp"
+              aria-label="Увеличить · Расчёт с доходностью 5 % на горизонтальном iPad mini"
+            >
+              <span class="hardware"
+                ><img
+                  src="../assets/mini-ru.webp"
+                  alt="Расчёт с доходностью 5 % на горизонтальном iPad mini"
+              /></span>
+            </a>
+            <a
+              class="device device-duo"
+              href="../assets/duo-ru.webp"
+              aria-label="Увеличить · Расчёт с доходностью 4,76 % на раскрытом iPhone Duo"
+            >
+              <span class="hardware"
+                ><img
+                  src="../assets/duo-ru.webp"
+                  alt="Расчёт с доходностью 4,76 % на раскрытом iPhone Duo"
+              /></span>
+            </a>
+          </div>
+          <figcaption>
+            iPhone <span aria-hidden="true">·</span> iPad mini
+            <span aria-hidden="true">·</span> iPhone Duo
+          </figcaption>
+        </figure>
       </section>
       <section class="example">
         <h2>Как прочитать расчёт</h2>
