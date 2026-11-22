@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://iaroslaval.github.io"
 BASE = "/surebet-support/"  # path of the site on the host
 APP_ID = "1667102550"
+PROVIDER_TOKEN = "126004656"  # App Store Connect campaign provider token (pt)
+GOOGLE_VERIFICATION = "CJs_gAWWfg1I8Veg_NBiL_f2dNYFHh-IkmU_piR_Nbk"
 EMAIL = "beldin_dev@icloud.com"
 UPDATED = "2026-11-21"
 LANGS = ["en", "ru", "fr"]
@@ -26,7 +28,7 @@ BADGE_WIDTH = {"en": 119.66407, "ru": 119.66407, "fr": 126.50751}  # badge viewB
 
 
 def store_url(lang: str) -> str:
-    return f"https://apps.apple.com/app/id{APP_ID}?ct=website-{lang}"
+    return f"https://apps.apple.com/app/id{APP_ID}?pt={PROVIDER_TOKEN}&ct=website-{lang}&mt=8"
 
 
 def asset(name: str) -> str:
@@ -496,6 +498,7 @@ def head(lang: str, kind: str, title: str, description: str, *, noindex: bool = 
     <meta name="description" content="{esc(description)}" />{robots}
     <link rel="canonical" href="{canonical}" />{alternates}
     <meta name="apple-itunes-app" content="app-id={APP_ID}" />
+    <meta name="google-site-verification" content="{GOOGLE_VERIFICATION}" />
     <meta name="theme-color" content="#137a41" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0f5530" media="(prefers-color-scheme: dark)" />
     <meta property="og:type" content="website" />
