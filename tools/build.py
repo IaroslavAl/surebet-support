@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import html
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -19,7 +20,7 @@ APP_ID = "1667102550"
 EMAIL = "beldin_dev@icloud.com"
 UPDATED = "2026-11-21"
 LANGS = ["en", "ru", "fr"]
-ASSET_VERSION = "5"
+ASSET_VERSION = "6"
 
 BADGE_WIDTH = {"en": 119.66407, "ru": 119.66407, "fr": 126.50751}  # badge viewBox at height 40
 
@@ -772,6 +773,60 @@ def sitemap() -> str:
     )
 
 
+# Hero background: the App Store header's tiles of the icon's SF Symbols
+# (plus, soccerball, tennisball.fill, equal). Sources in tools/symbols are the
+# same exports as design/app-icon/symbols in the app repository.
+SYMBOLS = {
+    # name: (crop viewBox, glyph width and height in the 512-px icon quadrant)
+    "plus": ("6.5 6.5 46.25 46.5", 236.72, 238),
+    "soccerball": ("4.25 11.75 57.5 57.5", 300, 300),
+    "tennisball.fill": ("4.25 11.75 57.5 57.5", 300, 300),
+    "equal": ("6.5 4 39.25 23", 236, 138.29),
+}
+PATTERN_ORDER = ["plus", "soccerball", "tennisball.fill", "equal"]
+PATTERN_PITCH = 120  # tile step; the repeating unit is 4 x 4 steps
+PATTERN_TILE = 96
+PATTERN_GLYPH = 0.72  # glyph size relative to the icon, as in the App Store header
+
+
+def pattern() -> str:
+    defs = []
+    for name, (view_box, _, _) in SYMBOLS.items():
+        src = (ROOT / "tools" / "symbols" / f"{name}.svg").read_text()
+        transform = re.search(r"<g [^>]*transform='([^']+)'", src).group(1)
+        d = " ".join(re.search(r" d='([^']+)'", src).group(1).split())
+        defs.append(
+            f'<symbol id="{name}" viewBox="{view_box}">'
+            f'<path transform="{transform}" d="{d}"/></symbol>'
+        )
+    p, t = PATTERN_PITCH, PATTERN_TILE
+    size = 4 * p
+    scale = t / 512 * PATTERN_GLYPH
+    tiles, glyphs = [], []
+    for row in range(4):
+        offset = (p // 2) * (row % 2)
+        for col in range(-1, 5):
+            x = offset + col * p + (p - t) / 2
+            y = row * p + (p - t) / 2
+            if x + t <= 0 or x >= size:
+                continue
+            name = PATTERN_ORDER[(col - row) % 4]
+            _, w, h = SYMBOLS[name]
+            gw, gh = w * scale, h * scale
+            tiles.append(f'<rect x="{x:g}" y="{y:g}" width="{t}" height="{t}" rx="22"/>')
+            glyphs.append(
+                f'<use href="#{name}" x="{x + (t - gw) / 2:.2f}" y="{y + (t - gh) / 2:.2f}" '
+                f'width="{gw:.2f}" height="{gh:.2f}"/>'
+            )
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{size}" height="{size}" '
+        f'viewBox="0 0 {size} {size}">\n<defs>{"".join(defs)}</defs>\n'
+        f'<g fill="#fff" fill-opacity=".06">{"".join(tiles)}</g>\n'
+        f'<g fill="#fff" stroke="#fff" stroke-width="1" fill-opacity=".2" stroke-opacity=".2">'
+        f'{"".join(glyphs)}</g>\n</svg>\n'
+    )
+
+
 def write(path: str, text: str) -> None:
     text = text.replace("App Store", "App\u00a0Store")
     target = ROOT / path
@@ -787,6 +842,7 @@ def main() -> None:
     write("index.html", home("en", canonical=page_url("en", "home")))
     write("404.html", not_found())
     write("sitemap.xml", sitemap())
+    write("assets/pattern.svg", pattern())
 
 
 if __name__ == "__main__":
