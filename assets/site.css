@@ -219,7 +219,7 @@ p {
   overflow: hidden;
   color: #fff;
   background:
-    url("pattern.svg") 50% 0 / 240px 240px repeat,
+    url("pattern.svg?v=6") 50% 0 / 480px 480px repeat,
     radial-gradient(70% 80% at 85% 35%, var(--hero-1), transparent 70%),
     linear-gradient(165deg, var(--hero-2) 0%, var(--hero-3) 100%);
 }
